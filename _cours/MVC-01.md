@@ -57,24 +57,4 @@ localhost/project/
 
 Ce système fonctionnerait tout à fait ! Néanmoins, nous serions obligés de (1) répéter du code de partout, (2) un peu trop mélanger du HTML et du PHP, (3) éparpiller les grands axes de traitement de la donnée (réception d'une requête, traitements en base de données, réponse à la demande...) : si une modification s'opère au niveau de la base de données (changer le nom d'un champ par exemple), ce sont tous les fichiers impliqués qu'il faudrait modifier. En MVC, il n'y aurait que le Model de la table que l'on a modifié qu'il faudrait adapter. De plus, grâce aux classes et à l'héritage, on peut économiser beaucoup de code en le transmettant de classes parents à classes enfants !
 
-### 1. Router
-Un **routeur** va *écouter* ce qui est saisi dans l'URL d'une requête HTTP (en GET par l'URL, en POST via un formulaire par exemple) : selon ce qui est demandé par l'utilisateur ou le formulaire, le rôle du router est de rediriger cette demande vers la bonne action, dans le bon fichier.
-
-> Par exemple, un utilisateur demande la route `/articles`. Pour le site `https://www.example.com`, l'URL serait `https://www.example.com/articles`.
-
-### 2. Controller
-Le rôle du 
-
-
-
-un **controller** à cette URL : ̀`$router->get('/articles', 'ArticlesContro router est 
-
-
-> Ici, lorsque l'utilisateur tappe `example.com/articles`, l'action qui sera effectuée est la méthode `index` qui est dans la classe `ArticlesController`.
-
-Il suffit donc, pour réaliser une nouvelle *route*, de :
-
-1. Créer la route dans le fichier du routeur
-2. Créer l'action dans la classe correspondante, le *controller*.
-
 Voyons maintenant comment mettre en place un projet MVC !
