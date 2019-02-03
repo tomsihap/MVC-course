@@ -5,7 +5,7 @@ Dorénavant, comme on l'a vu, quelle que soit l'adresse saisie par l'utilisateur
 - Un fichier index.php appelant le router
 - Un fichier .htaccess qui redirigera chaque requête vers index.php
 
-### Importer le router
+## Importer le router avec Composer
 Nous pourrions créer de toutes pièces notre router, néanmoins il existe des milliers de bibliothèques toutes prêtes en PHP, un router efficace, open-source et donc éprouvé existe donc déjà sans doute !
 
 > Le gestionnaire de packages pour PHP s'appelle **Composer**. Il doit normalement déjà être installé sur votre système, si ça n'est pas déjà le cas vous pouvez trouver les instructions d'installation [sur getcomposer.org](https://getcomposer.org/doc/00-intro.md).
@@ -27,7 +27,7 @@ Composer vient de créer plusieurs fichiers et dossiers :
 composer.json   # Fichier indiquant la liste des dépendances du projet
 composer.json.lock # Fichier technique indiquant l'état des dépendances actuellement installées
 ```
-
+## index.php
 Il faut maintenant créer un fichier `index.php` et lui indiquer en tout premier lieu que nous allons inclure les dépendances grâce à l'autoloader de Composer :
 
 ```php
@@ -44,6 +44,8 @@ var_dump($router);
 
 Si un `object(Bramus\Router\Router)` est retourné par le `var_dump()`, alors tout fonctionne.
 
+## .htaccess
+
 Enfin, toujours d'après la documentation de la dépendance, pour que le routeur fonctionne, il faut rediriger toutes les requêtes vers index.php (en effet ! Il faut bien que l'URL demandée soit lue par notre routeur, et comme on instancie le routeur dans index.php, on envoie les requêtes vers ce fichier !).
 
 Pour cela, on créée un fichier nommé `.htaccess` avec dedans : 
@@ -54,6 +56,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php [L]
 ```
+
+
+## Conclusion
 
 Voilà, notre projet est presque prêt à démarrer. Il manque un dernier détail : le fichier `.gitignore`.
 
