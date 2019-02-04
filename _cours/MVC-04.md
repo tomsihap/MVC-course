@@ -319,8 +319,8 @@ On va donc :
             foreach ($data as $d) {
                 $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
-                return $objectsList;
             }
+                return $objectsList;
         }
 
         return $data;
@@ -335,8 +335,8 @@ On va donc :
             foreach ($data as $d) {
                 $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
-                return $objectsList;
             }
+            return $objectsList;
         }
 
         return $data;
@@ -369,6 +369,20 @@ On peut maintenant tester notre model directement en bas du fichier index.php :
 
 
 ```php
+
+/**
+ * Test de save()
+ */
+$titre  = 'Un nouvel article';
+$contenu = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem, earum, expedita ex cum, voluptatum assumenda maiores delectus id eius provident cumque porro cupiditate quo necessitatibus eos aspernatur unde eaque.';
+
+$article = new Article($titre, $contenu);
+$article->save();
+
+/**
+ * Test de findAll()
+ */
+
 
 ```
 
