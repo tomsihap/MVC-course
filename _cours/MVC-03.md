@@ -65,6 +65,7 @@ spl_autoload_register (function ($class) {
  * On récupère les fichiers de configuration dans le bon ordre
  */
 require 'config/app.php';
+require 'config/database.php';
 require 'config/helpers.php';
 require 'config/Db.php';
 require 'config/routes.php';

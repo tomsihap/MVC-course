@@ -1,22 +1,6 @@
-# Réalisation d'un MVC : mise en pratique (tables, models)
+# Réalisation d'un MVC : mise en pratique (controllers)
 
-> La structure de notre projet est enfin réalisée. Si besoin, vous retrouverez ce modèle de projet fonctionnel dans le dossier `_base_project` à utiliser de suite.
-
-## Comment commencer à travailler ?
-
-Parmi tous ces fichiers à gérer (router, controllers, models, views, dépendances...), le travail peut paraître impressionnant à premier abord. Nous allons voir comment travailler de façon méthodique afin de profiter d'un des avantages du MVC : pouvoir travailler vite et efficacement grâce à un découpage logique !
-> Principes de développement: [Keep It Simple, Stupid!](https://fr.wikipedia.org/wiki/Principe_KISS), [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), [SOLID](https://fr.wikipedia.org/wiki/SOLID_(informatique)), [You Ain't Gonna Need It](https://fr.wikipedia.org/wiki/YAGNI), [Extreme Programming](https://fr.wikipedia.org/wiki/Extreme_programming).
-
-1. Créer les **tables** dans sa base de données.
-2. Créer les **Model**, un par ressource.
-3. Créer des **routes**: pensez qu'à chaque ressource, on peut avoir besoin en général d'au moins: "browse", "read", "edit", "add", "delete" (BREAD). Faites des routes en fonction !
-4. Créer les **controllers**, un par ressource et une méthode par route nécessaire.
-5. Créer les **views** pour chaque méthode de chaque ressource nécessitant une vue.
-6. Répéter 1 à 5 pour chaque nouvelle ressource !
-
-
-## Exemple d'une ressource : "Article"
-
+Maintenant que nous avons finalisé l'aspect "données" du projet, c'est à dire tout ce qui permet d'enregistrer des données
 Pour cet exemple, nous allons suivre pas à pas chacune des étapes pour créer une ressource Article.
 
 ### 1. Créer la table Article
@@ -85,14 +69,14 @@ class Article extends Db {
     /**
      * Méthodes magiques
      */
-    public function __construct($title, $content, $id = null, $short_content = null, $id_author = null, $created_at = null, $updated_at = null) {
+    public function __construct($title, $content, $id = null, $short_content = null, $content = null, $id_author = null, $created_at = null, $updated_at = null) {
 
         /**
          * Pour chaque argument, on utilise les Setters pour attribuer la valeur à l'objet.
          * Pour appeler une méthode non statique de la classe DANS la classe, on utilise $this.
          */
         $this->setTitle($title);
-        $this->setContent($content);
+        $this->setDescription($description);
         $this->setId($id);
     }
 ```
@@ -257,10 +241,10 @@ On va donc :
 
         $data = [
             "title"         => $this->title(),
-            "content"       => $this->content()
+            "description"   => $this->description()
         ];
 
-        if ($this->id > 0) return $this->update();
+        if ($this->id > 0) : return $this->update();
 
         $nouvelId = Db::dbCreate(self::TABLE_NAME, $data);
 
@@ -317,7 +301,7 @@ On va donc :
             $objectsList = [];
 
             foreach ($data as $d) {
-                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['id_author'], $d['created_at'], $d['updated_at']);
+                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
                 return $objectsList;
             }
@@ -333,7 +317,7 @@ On va donc :
             $objectsList = [];
 
             foreach ($data as $d) {
-                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['id_author'], $d['created_at'], $d['updated_at']);
+                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
                 return $objectsList;
             }
@@ -362,15 +346,5 @@ On va donc :
 
 } // Dernière accolade correspondant à la première ligne "class Article { ..."
 ```
-
-## Comment tester tout ça ?
-
-On peut maintenant tester notre model directement en bas du fichier index.php :
-
-
-```php
-
-```
-
 
 Voilà, le **Model** est prêt. Vous pouvez bien sûr rajouter d'autres méthodes qui vous semblent intéressantes sur la gestion des données, selon vos propres données vous aurez sans doute des cas particuliers à gérer (des dates, des intervalles, mais aussi des types spéciaux, l'upload de fichiers se fait également ici en partie...).

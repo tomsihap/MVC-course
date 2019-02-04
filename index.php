@@ -24,6 +24,13 @@ spl_autoload_register (function ($class) {
  * On récupère les fichiers de configuration dans le bon ordre
  */
 require 'config/app.php';
+require 'config/database.php';
 require 'config/helpers.php';
 require 'config/Db.php';
 require 'config/routes.php';
+
+$titre  = 'Un nouvel article';
+$contenu = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem, earum, expedita ex cum, voluptatum assumenda maiores delectus id eius provident cumque porro cupiditate quo necessitatibus eos aspernatur unde eaque.';
+
+$article = new Article($titre, $contenu);
+$article->save();

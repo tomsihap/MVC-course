@@ -33,7 +33,6 @@ class Db {
         $req .= " (`".implode("`, `", array_keys($data))."`)";
         $req .= " VALUES (:".implode(", :", array_keys($data)).") ";
         $response = $bdd->prepare($req);
-        var_dump($req, $data);
         $response->execute($data);
         return $bdd->lastInsertId();
     }
