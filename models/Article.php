@@ -201,7 +201,7 @@ class Article extends Db {
         return;
     }
 
-      public static function findAll($objects = true) {
+    public static function findAll($objects = true) {
 
 
         $data = Db::dbFind(self::TABLE_NAME);
