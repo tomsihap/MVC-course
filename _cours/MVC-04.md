@@ -196,7 +196,7 @@ class Article extends Db {
      * Setters
      */
 
-    public function setId(int $id) {
+    public function setId($id) {
         return $this->id = $id;
     }
 
@@ -219,7 +219,7 @@ class Article extends Db {
     public function setContent(string $content) {
         return $this->content = $content;
     }
-    public function setIdAuthor(int $id_author = null) {
+    public function setIdAuthor($id_author = null) {
         return $this->id_author = $id_author;
     }
 

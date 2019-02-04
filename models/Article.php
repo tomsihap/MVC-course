@@ -118,7 +118,7 @@ class Article extends Db {
      * Setters
      */
 
-    public function setId(int $id) {
+    public function setId($id = null) {
         return $this->id = $id;
     }
 
@@ -141,15 +141,15 @@ class Article extends Db {
     public function setContent(string $content) {
         return $this->content = $content;
     }
-    public function setIdAuthor(int $id_author = null) {
+    public function setIdAuthor($id_author = null) {
         return $this->id_author = $id_author;
     }
 
-    public function setCreatedAt(string $created_at) {
+    public function setCreatedAt(string $created_at = null) {
         return $this->created_at = $created_at;
     }
 
-    public function setUpdatedAt(string $updated_at) {
+    public function setUpdatedAt(string $updated_at = null) {
         return $this->updated_at = $updated_at;
     }
 
@@ -212,7 +212,7 @@ class Article extends Db {
 
             foreach ($data as $d) {
 
-                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
+                $objectsList[] = new Article($d['title'], $d['content'], intval($d['id']), $d['short_content'], $d['content'], intval($d['id_author']), $d['created_at'], $d['updated_at']);
             }
 
             return $objectsList;
@@ -228,7 +228,7 @@ class Article extends Db {
             $objectsList = [];
 
             foreach ($data as $d) {
-                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
+                $objectsList[] = new Article($d['title'], $d['content'], intval($d['id']), $d['short_content'], $d['content'], intval($d['id_author']), $d['created_at'], $d['updated_at']);
 
             }
             return $objectsList;
