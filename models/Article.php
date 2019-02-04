@@ -17,7 +17,6 @@ class Article extends Db {
     protected $created_at;
     protected $updated_at;
 
-
     /**
      * Constantes
      * Nous pouvons aussi définir des constantes. Ici, il s'agit du nom de la table. Ainsi, s'il venait à changer, nous n'aurons plus qu'à le changer à cet endroit.
@@ -42,7 +41,7 @@ class Article extends Db {
         $this->setUpdatedAt($updated_at);
     }
 
-       /**
+    /**
      * Getters
      */
 
