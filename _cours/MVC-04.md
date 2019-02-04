@@ -1,4 +1,4 @@
-# Réalisation d'un MVC : mise en pratique
+# Réalisation d'un MVC : mise en pratique (tables, models)
 
 > La structure de notre projet est enfin réalisée. Si besoin, vous retrouverez ce modèle de projet fonctionnel dans le dossier `_base_project` à utiliser de suite.
 
@@ -85,7 +85,7 @@ class Article extends Db {
     /**
      * Méthodes magiques
      */
-    public function __construct($title, $content, $id = null, $short_content = null, $content = null, $id_author = null, $created_at = null, $updated_at = null) {
+    public function __construct($title, $content, $id = null, $short_content = null, $id_author = null, $created_at = null, $updated_at = null) {
 
         /**
          * Pour chaque argument, on utilise les Setters pour attribuer la valeur à l'objet.
@@ -317,7 +317,7 @@ On va donc :
             $objectsList = [];
 
             foreach ($data as $d) {
-                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
+                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
                 return $objectsList;
             }
@@ -333,7 +333,7 @@ On va donc :
             $objectsList = [];
 
             foreach ($data as $d) {
-                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
+                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
                 return $objectsList;
             }
@@ -362,5 +362,13 @@ On va donc :
 
 } // Dernière accolade correspondant à la première ligne "class Article { ..."
 ```
+
+## Comment tester tout ça ?
+
+On peut maintenant tester notre model directement en bas du fichier index.php :
+
+
+
+
 
 Voilà, le **Model** est prêt. Vous pouvez bien sûr rajouter d'autres méthodes qui vous semblent intéressantes sur la gestion des données, selon vos propres données vous aurez sans doute des cas particuliers à gérer (des dates, des intervalles, mais aussi des types spéciaux, l'upload de fichiers se fait également ici en partie...).
