@@ -94,6 +94,11 @@ class Article extends Db {
         $this->setTitle($title);
         $this->setContent($content);
         $this->setId($id);
+
+        $this->setShortContent($short_content);
+        $this->setIdAuthor($id_author);
+        $this->setCreatedAt($created_at);
+        $this->setUpdatedAt($updated_at);
     }
 ```
 
@@ -181,8 +186,6 @@ class Article extends Db {
 
 > Pour chaque champ que l'on a droit d'enregistrer, on crée un setter (même nom que le champ, en camelCase par convention, avec "set" devant).
 
-> Par exemple, les champs "id" et "created_at" ne peuvent pas être modifiés : on ne vas pas créer de setters pour eux (ils sont automatiques côté MySQL).
-
 > C'est aussi ici où l'on doit faire les validations à l'enregistrement !! On va faire l'exemple pour setTitle.
 
 > Pour gérer une erreur, on utilisera dorénavant throw new Exception('message');
@@ -218,6 +221,10 @@ class Article extends Db {
     }
     public function setIdAuthor($id_author = null) {
         return $this->id_author = $id_author;
+    }
+
+    public function setCreatedAt($created_at) {
+        return $this->created_at = $created_at;
     }
 
     public function setUpdatedAt($updated_at) {

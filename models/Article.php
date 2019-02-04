@@ -36,6 +36,10 @@ class Article extends Db {
         $this->setTitle($title);
         $this->setContent($content);
         $this->setId($id);
+        $this->setShortContent($short_content);
+        $this->setIdAuthor($id_author);
+        $this->setCreatedAt($created_at);
+        $this->setUpdatedAt($updated_at);
     }
 
        /**
@@ -139,6 +143,10 @@ class Article extends Db {
     }
     public function setIdAuthor($id_author = null) {
         return $this->id_author = $id_author;
+    }
+
+    public function setCreatedAt($created_at) {
+        return $this->created_at = $created_at;
     }
 
     public function setUpdatedAt($updated_at) {
