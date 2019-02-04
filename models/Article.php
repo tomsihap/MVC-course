@@ -244,7 +244,9 @@ class Article extends Db {
         ];
 
         $element = Db::dbFind(self::TABLE_NAME, $request);
-        $element = $element[0];
+
+        if (count($element) > 0) $element = $element[0];
+        else return;
 
         if ($object) {
             $article = new Article($element['title'], $element['content'], $element['id']);
