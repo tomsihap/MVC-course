@@ -196,16 +196,18 @@ class Article extends Db {
 
       public static function findAll($objects = true) {
 
-        $data = Db::dbFind(self::TABLE_NAME);
 
+        $data = Db::dbFind(self::TABLE_NAME);
+        
         if ($objects) {
             $objectsList = [];
 
             foreach ($data as $d) {
-                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
-                return $objectsList;
+                $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
             }
+
+            return $objectsList;
         }
 
         return $data;
@@ -220,8 +222,8 @@ class Article extends Db {
             foreach ($data as $d) {
                 $objectsList[] = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['content'], $d['id_author'], $d['created_at'], $d['updated_at']);
 
-                return $objectsList;
             }
+            return $objectsList;
         }
 
         return $data;

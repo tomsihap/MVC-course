@@ -76,6 +76,7 @@ class Db {
             $req .= " WHERE ";
             $reqOrder = '';
             foreach($request as $r) {
+
                 switch($r[0]):
                     case "orderBy":
                         $reqOrder = " ORDER BY `" . htmlspecialchars($r[1]) . "` " . htmlspecialchars($r[2]);
@@ -91,10 +92,7 @@ class Db {
             $req .= $reqOrder;
         }
         $response = $bdd->query($req);
-        $data = [];
-        while ($donnees = $response->fetch()) {
-            $data[] = $donnees;
-        }
+        $data = $response->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
     /**
