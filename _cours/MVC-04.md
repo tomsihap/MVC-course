@@ -369,9 +369,8 @@ On peut maintenant tester notre model directement en bas du fichier index.php :
 
 
 ```php
-
 /**
- * Test de save()
+ * On créée deux articles (test de save() )
  */
 $titre  = 'Un nouvel article';
 $contenu = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem, earum, expedita ex cum, voluptatum assumenda maiores delectus id eius provident cumque porro cupiditate quo necessitatibus eos aspernatur unde eaque.';
@@ -380,11 +379,53 @@ $article = new Article($titre, $contenu);
 $article->save();
 
 /**
- * Test de findAll()
+ * On met à jour le titre
  */
+$article->setTitle('modif du premier titre');
+$article->save();
 
+$titre2  = 'Un autre article';
+$contenu2 = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem, earum, expedita ex cum, voluptatum assumenda maiores delectus id eius provident cumque porro cupiditate quo necessitatibus eos aspernatur unde eaque.';
+
+$article2 = new Article($titre2, $contenu2);
+$article2->save();
+
+/**
+ * Tous les articles en objects
+ */
+echo "<b>Tous les articles (objects) : </b>";
+$articles = Article::findAll();
+var_dump($articles);
+
+/**
+ * Tous les articles en array
+ */
+echo "<hr>";
+echo "<b>Tous les articles (arrays) : </b>";
+$articlesArray = Article::findAll(false);
+var_dump($articlesArray);
+
+/**
+ * Article "Un autre article" (title LIKE "autre")
+ */
+echo '<hr>';
+echo "<b>Article 'un autre article' : </b>";
+$autreArticle = Article::find([
+    ['title', 'like', '%autre%']
+]);
+var_dump($autreArticle);
+
+
+/**
+ * Article # 1
+ */
+echo '<hr>';
+echo "<b>Article id = 1 : </b>";
+$premierArticle = Article::findOne(1);
+var_dump($premierArticle);
 
 ```
 
+> Supprimez bien ces tests une fois qu'ils fonctionnent !
 
 Voilà, le **Model** est prêt. Vous pouvez bien sûr rajouter d'autres méthodes qui vous semblent intéressantes sur la gestion des données, selon vos propres données vous aurez sans doute des cas particuliers à gérer (des dates, des intervalles, mais aussi des types spéciaux, l'upload de fichiers se fait également ici en partie...).

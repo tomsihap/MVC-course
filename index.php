@@ -31,7 +31,7 @@ require 'config/routes.php';
 
 
 /**
- * On créée deux articles
+ * On créée deux articles (test de save() )
  */
 $titre  = 'Un nouvel article';
 $contenu = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem, earum, expedita ex cum, voluptatum assumenda maiores delectus id eius provident cumque porro cupiditate quo necessitatibus eos aspernatur unde eaque.';
@@ -39,11 +39,17 @@ $contenu = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem
 $article = new Article($titre, $contenu);
 $article->save();
 
-$titre  = 'Un autre article';
-$contenu = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem, earum, expedita ex cum, voluptatum assumenda maiores delectus id eius provident cumque porro cupiditate quo necessitatibus eos aspernatur unde eaque.';
-
-$article = new Article($titre, $contenu);
+/**
+ * On met à jour le titre
+ */
+$article->setTitle('modif du premier titre');
 $article->save();
+
+$titre2  = 'Un autre article';
+$contenu2 = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quidem, earum, expedita ex cum, voluptatum assumenda maiores delectus id eius provident cumque porro cupiditate quo necessitatibus eos aspernatur unde eaque.';
+
+$article2 = new Article($titre2, $contenu2);
+$article2->save();
 
 /**
  * Tous les articles en objects
