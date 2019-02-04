@@ -181,7 +181,7 @@ class Article extends Db {
 
 > Pour chaque champ que l'on a droit d'enregistrer, on crée un setter (même nom que le champ, en camelCase par convention, avec "set" devant).
 
-> Par exemple, les champs "id" et "created_at" ne peuvent pas être modifiés : on ne vas pas créer de getters pour eux (ils sont automatiques côté MySQL).
+> Par exemple, les champs "id" et "created_at" ne peuvent pas être modifiés : on ne vas pas créer de setters pour eux (ils sont automatiques côté MySQL).
 
 > C'est aussi ici où l'on doit faire les validations à l'enregistrement !! On va faire l'exemple pour setTitle.
 
