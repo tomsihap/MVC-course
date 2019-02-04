@@ -92,6 +92,7 @@ class Db {
             $req .= $reqOrder;
         }
         $response = $bdd->query($req);
+
         $data = $response->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
