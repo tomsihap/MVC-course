@@ -7,6 +7,6 @@ class ArticlesController {
 
         $articles = Article::findAll();
 
-        var_dump($articles);
+        view('articles.index', compact('articles'));
     }
 }

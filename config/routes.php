@@ -8,3 +8,4 @@ $router->get('hello', function() {
 });
 
 $router->get('/articles', 'ArticlesController@index');
+$router->run();
