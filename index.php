@@ -84,5 +84,3 @@ echo '<hr>';
 echo "<b>Article id = 1 : </b>";
 $premierArticle = Article::findOne(1);
 var_dump($premierArticle);
-
-throw new Exception('test');
