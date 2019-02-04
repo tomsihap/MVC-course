@@ -196,11 +196,11 @@ class Article extends Db {
      * Setters
      */
 
-    public function setId($id) {
+    public function setId(int $id) {
         return $this->id = $id;
     }
 
-    public function setTitle($title) {
+    public function setTitle(string $title) {
 
         if (strlen($title) == 0) {
             throw new Exception('Le titre ne peut pas être vide.');
@@ -213,21 +213,21 @@ class Article extends Db {
         return $this->title = $title;
     }
 
-    public function setShortContent($short_content = null) {
+    public function setShortContent(string $short_content = null) {
         return $this->short_content = $short_content;
     }
-    public function setContent($content) {
+    public function setContent(string $content) {
         return $this->content = $content;
     }
-    public function setIdAuthor($id_author = null) {
+    public function setIdAuthor(int $id_author = null) {
         return $this->id_author = $id_author;
     }
 
-    public function setCreatedAt($created_at) {
+    public function setCreatedAt(string $created_at) {
         return $this->created_at = $created_at;
     }
 
-    public function setUpdatedAt($updated_at) {
+    public function setUpdatedAt(string $updated_at) {
         return $this->updated_at = $updated_at;
     }
 ```
