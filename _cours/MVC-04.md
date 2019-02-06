@@ -197,7 +197,8 @@ class Article extends Db {
      */
 
     public function setId($id) {
-        return $this->id = $id;
+        $this->id = $id;
+        return $this;
     }
 
     public function setTitle(string $title) {
@@ -210,7 +211,8 @@ class Article extends Db {
             throw new Exception('Le titre ne peut pas être supérieur à 150 caractères.');
         }
 
-        return $this->title = $title;
+        $this->title = $title;
+        return $this;
     }
 
     public function setShortContent(string $short_content = null) {
