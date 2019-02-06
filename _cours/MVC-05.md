@@ -75,6 +75,9 @@ public function index() {
 ```
 
 1. `view()` prend en premier paramètre le chemin virtuel vers la vue : en fait, il va chercher "public/views/articles/index.php".
+
+> Il faut donc créer le dossier `articles` dans `public/views/`, et le fichier `index.php` dans `public/views/articles/` ! L'intérêt d'écrire `articles.index` plutôt que `articles/index.php` voire `public/views/articles/index.php` est simplement pour améliorer la lisibilité (moins de symboles inutiles à la compréhension) et abstraire le fait que `view()` va chercher les vues dans `/public/views`.
+
 2. Le deuxième paramètre est "compact()" : on passe en string la liste des variables à passer à la vue ([voir la doc](http://php.net/manual/fr/function.compact.php)).
 
 ### 3. La vue
