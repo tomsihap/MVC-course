@@ -28,3 +28,27 @@ require 'config/database.php';
 require 'config/helpers.php';
 require 'config/Db.php';
 require 'config/routes.php';
+
+
+echo "test<br>";
+
+
+$user = new User("Thomas", "Watson");
+$user->save();
+var_dump($user);
+
+$article = new Article("nouvel article test", "desc desc", $user);
+$article->save();
+var_dump($article);
+
+$category = new Category('Géographie', 'desc de cat');
+$category->save();
+var_dump($category);
+
+$article->addCategory($category);
+
+$category->addArticle($article);
+
+echo "Combien d'articles par catégorie :<br>";
+
+var_dump( ArticleCategory::articlesCountByCategory()  );

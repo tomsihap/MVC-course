@@ -26,7 +26,7 @@ class Article extends Db {
     /**
      * Méthodes magiques
      */
-    public function __construct($title, $content, $id = null, $short_content = null, $id_author = null, $created_at = null, $updated_at = null) {
+    public function __construct($title, $content, User $user, $id = null, $short_content = null, $created_at = null, $updated_at = null) {
 
         /**
          * Pour chaque argument, on utilise les Setters pour attribuer la valeur à l'objet.
@@ -36,7 +36,7 @@ class Article extends Db {
         $this->setContent($content);
         $this->setId($id);
         $this->setShortContent($short_content);
-        $this->setIdAuthor($id_author);
+        $this->setIdAuthor($user);
         $this->setCreatedAt($created_at);
         $this->setUpdatedAt($updated_at);
     }
@@ -140,8 +140,8 @@ class Article extends Db {
     public function setContent(string $content) {
         return $this->content = $content;
     }
-    public function setIdAuthor($id_author = null) {
-        return $this->id_author = $id_author;
+    public function setIdAuthor($author) {
+        return $this->id_author = $author->id();
     }
 
     public function setCreatedAt(string $created_at = null) {
@@ -158,11 +158,12 @@ class Article extends Db {
     public function save() {
 
         $data = [
-            "title"         => $this->title(),
-            "content"   => $this->content()
+            "title"     => $this->title(),
+            "content"   => $this->content(),
+            "id_author" => $this->idAuthor()
         ];
 
-        if ($this->id > 0) return $this->update();
+        //if ($this->id > 0) return $this->update();
 
         $nouvelId = Db::dbCreate(self::TABLE_NAME, $data);
 
@@ -254,6 +255,25 @@ class Article extends Db {
 
         return $element;
         
+    }
+
+    public static function findByAuthor($id_author) {
+
+        return Article::find(self::TABLE_NAME, [
+            ['id_author', '=', $id_author]
+        ]);
+    }
+
+    public function categories() {
+        return ArticleCategory::findByCategory($this->id());
+    }
+
+    public function addCategory(Category $category) {
+
+        $ac = new ArticleCategory($this->id(), $category->id());
+        $ac->save();
+
+        return;
     }
 
 } // Dernière accolade correspondant à la première ligne "class Article { ..."

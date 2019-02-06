@@ -1,7 +1,8 @@
 <?php
 class Db {
     public function __construct() { /** */ }
-    private static function getDb() {
+
+    protected static function getDb() {
         try {
             // Essaie de faire ce script...
             $bdd = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8;port='.DB_PORT, DB_USER, DB_PWD);
@@ -27,12 +28,14 @@ class Db {
      * ];
      */
     protected static function dbCreate(string $table, array $data) {
+
         $bdd = self::getDb();
         // Construction de la requête au format : INSERT INTO $table($data.keys) VALUES(:$data.keys) 
         $req  = "INSERT INTO " . $table;
         $req .= " (`".implode("`, `", array_keys($data))."`)";
         $req .= " VALUES (:".implode(", :", array_keys($data)).") ";
         $response = $bdd->prepare($req);
+
         $response->execute($data);
         return $bdd->lastInsertId();
     }
@@ -70,8 +73,11 @@ class Db {
      * ];
      */
     protected static function dbFind(string $table, array $request = null) {
+
         $bdd = self::getDb();
+
         $req = "SELECT * FROM " . $table;
+
         if (isset($request)) {
             $req .= " WHERE ";
             $reqOrder = '';
@@ -88,9 +94,11 @@ class Db {
                 endswitch;
                 
             }
+
             $req = substr($req, 0, -5);
             $req .= $reqOrder;
         }
+        
         $response = $bdd->query($req);
 
         $data = $response->fetchAll(PDO::FETCH_ASSOC);
