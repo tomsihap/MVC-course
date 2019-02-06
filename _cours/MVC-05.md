@@ -23,6 +23,8 @@ $router->get('/hello', function() {
     echo "hello world";
 });
 
+// Indispensable à la fin de la liste des routes pour que les routes fonctionnent !
+$router->run();
 ```
 > Pour tester, allez sur votre application à l'adresse [/hello](#).
 
