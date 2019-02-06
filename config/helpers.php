@@ -32,7 +32,7 @@ function view($path, $vars = null, $include = true) {
     $url = substr($url, 0, -1);
     $url .= '.php';
     
-    $fullUrl = 'public/views/' . $url;
+    $fullUrl = VIEWS_URL . $url;
     if ($include) {
         if ($vars) { extract($vars); }
         include($fullUrl);
