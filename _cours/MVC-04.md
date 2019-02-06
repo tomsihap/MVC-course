@@ -214,21 +214,26 @@ class Article extends Db {
     }
 
     public function setShortContent(string $short_content = null) {
-        return $this->short_content = $short_content;
+        $this->short_content = $short_content;
+        return $this;
     }
     public function setContent(string $content) {
-        return $this->content = $content;
+        $this->content = $content;
+        return $this;
     }
     public function setIdAuthor($id_author = null) {
-        return $this->id_author = $id_author;
+        $this->id_author = $id_author;
+        return $this;
     }
 
     public function setCreatedAt(string $created_at) {
-        return $this->created_at = $created_at;
+        $this->created_at = $created_at;
+        return $this;
     }
 
     public function setUpdatedAt(string $updated_at) {
-        return $this->updated_at = $updated_at;
+        $this->updated_at = $updated_at;
+        return $this;
     }
 ```
 

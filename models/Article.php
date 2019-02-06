@@ -117,8 +117,9 @@ class Article extends Db {
      * Setters
      */
 
-    public function setId($id = null) {
-        return $this->id = $id;
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
     }
 
     public function setTitle(string $title) {
@@ -131,25 +132,31 @@ class Article extends Db {
             throw new Exception('Le titre ne peut pas être supérieur à 150 caractères.');
         }
 
-        return $this->title = $title;
+        $this->title = $title;
+        return $this;
     }
 
     public function setShortContent(string $short_content = null) {
-        return $this->short_content = $short_content;
+        $this->short_content = $short_content;
+        return $this;
     }
     public function setContent(string $content) {
-        return $this->content = $content;
+        $this->content = $content;
+        return $this;
     }
-    public function setIdAuthor($author) {
-        return $this->id_author = $author->id();
-    }
-
-    public function setCreatedAt(string $created_at = null) {
-        return $this->created_at = $created_at;
+    public function setIdAuthor($id_author = null) {
+        $this->id_author = $id_author;
+        return $this;
     }
 
-    public function setUpdatedAt(string $updated_at = null) {
-        return $this->updated_at = $updated_at;
+    public function setCreatedAt(string $created_at) {
+        $this->created_at = $created_at;
+        return $this;
+    }
+
+    public function setUpdatedAt(string $updated_at) {
+        $this->updated_at = $updated_at;
+        return $this;
     }
 
      /**
