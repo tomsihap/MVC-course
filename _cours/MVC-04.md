@@ -369,7 +369,7 @@ On va donc :
 
 
         if ($object) {
-            $article = new Article($element['title'], $element['content'], $element['id']);
+            $article = new Article($d['title'], $d['content'], $d['id'], $d['short_content'], $d['id_author'], $d['created_at'], $d['updated_at']);
             return $article;
         }
 
