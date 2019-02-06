@@ -10,7 +10,7 @@ class_alias('\Bramus\Router\Router', 'Router');
  */
 const WEBSITE_TITLE = "Mon nouveau site en MVC";
 const BASE_URL = "localhost/videoclub";
-const VIEWS_URL = "public/views";
+const VIEWS_URL = "public/views/";
 
 /**
  * Liste des dossiers source pour l'autoload des classes
